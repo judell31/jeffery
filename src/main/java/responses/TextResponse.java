@@ -13,13 +13,12 @@ public class TextResponse {
 
         System.out.println(event.getGuild().getBotRole().getAsMention());
         List<Role> x = event.getGuild().getRoles();
-        System.out.println(event.getGuild().getRolesByName("role name", true));
 
         event.getChannel().sendTyping().queue();
-        event.getChannel().sendMessage("This is a test: " + x).queue();
+        event.getChannel().sendMessage("This is a test: " + getRole(event, 581328836923359232L).getAsMention()).queue();
     }
 
-    private Role getRole(GuildMessageReceivedEvent event, String name) {
-        return event.getGuild().getRolesByName(name, true).get(0);
+    private static Role getRole(GuildMessageReceivedEvent event, long id) {
+        return event.getGuild().getRoleById(id);
     }
 }
